@@ -9,4 +9,10 @@ let sourceCode = fs.readFileSync(contractFile, 'utf8')
 console.log('compiling contract...')
 let compiledContract = solc.compile(sourceCode, 1)
 console.log('export compiledContract...')
+
+for (let cName in compiledContract.contracts) {
+	console.log(cName)
+	console.log(compiledContract.contracts[cName].interface)
+}
+
 module.exports = compiledContract.contracts[contractName]

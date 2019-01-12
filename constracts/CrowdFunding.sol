@@ -18,7 +18,7 @@ contract Funding {
 	}
 
 	address public manager;
-	string public fundingName;
+	string public projectName;
 	uint256 public targetMoney;
 	uint256 public supportMoney;
 	uint256 public duration;
@@ -28,9 +28,9 @@ contract Funding {
 	SupporterFundingContract supporterFundings;
 	Request[] allRequests;
 
-	constructor(address _creator, string _fundingName, uint256 _targetMoney, uint256 _supportMoney, uint256 _duration, SupporterFundingContract _supporterFundings) public {
+	constructor(address _creator, string _projectName, uint256 _targetMoney, uint256 _supportMoney, uint256 _duration, SupporterFundingContract _supporterFundings) public {
 		manager = _creator;
-		fundingName = _fundingName;
+		projectName = _projectName;
 		targetMoney = _targetMoney;
 		supportMoney = _supportMoney;
 		duration = _duration;
@@ -125,8 +125,8 @@ contract FundingFactory {
 		supporterFundings = new SupporterFundingContract();
 	}
 
-	function createFunding(string _fundingName, uint _targetMoney, uint _supportMoney, uint _duration) public {
-		address funding = new Funding(msg.sender, _fundingName, _targetMoney, _supportMoney, _duration, supporterFundings);
+	function createFunding(string _projectName, uint _targetMoney, uint _supportMoney, uint _duration) public {
+		address funding = new Funding(msg.sender, _projectName, _targetMoney, _supportMoney, _duration, supporterFundings);
 		allFundings.push(funding);
 		creatorFundings[msg.sender].push(funding);
 	}
