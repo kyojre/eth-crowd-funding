@@ -5,9 +5,7 @@ const RequestTable = (props) => {
 
 	let {requests, handleApprove, pageKey, handleFinalize, investorCount} = props
 	console.log('aaaaaa:', handleApprove)
-	//遍历request，每一个request都生成一个Table.Row（一行）
 
-	//map(数据，索引)
 	let rowContainer = requests.map((request, i) => {
 		return <RowInfo key={i}
 		request={request}
